@@ -1,1 +1,8 @@
 /* all app scss styles here */
+
+body,.off-canvas-wrap{
+  height: 100%;
+}
+.off-canvas-wrap, .inner-wrap{
+  min-height: 100%;
+}

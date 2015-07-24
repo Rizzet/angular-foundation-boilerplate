@@ -24,6 +24,21 @@ module.exports = function(grunt) {
 			}
 		},
 
+
+        compass: {
+            dist: {
+                options: {
+                    sassDir: ['<%= app %>/scss/'],
+                    cssDir: ['<%= app %>/css/'],
+                    environment: 'development',
+                    outputStyle: 'expanded'
+                }
+            },
+            options: {
+                importPath: ['<%= app %>/bower_components/foundation/scss']
+            }
+        },
+
 		
 
 		jshint: {
@@ -94,11 +109,11 @@ module.exports = function(grunt) {
 		watch: {
 			grunt: {
 				files: ['Gruntfile.js'],
-				tasks: ['sass']
+				tasks: ['default']
 			},
-			sass: {
+			compass: {
 				files: '<%= app %>/scss/**/*.scss',
-				tasks: ['sass']
+				tasks: ['compass']
 			},
 			livereload: {
 				files: ['<%= app %>/**/*.html', '!<%= app %>/bower_components/**', '<%= app %>/js/**/*.js', '<%= app %>/css/**/*.css', '<%= app %>/images/**/*.{jpg,gif,svg,jpeg,png}'],
@@ -148,13 +163,13 @@ module.exports = function(grunt) {
 	});
 
 	
-	grunt.registerTask('compile-sass', ['sass']);
+	grunt.registerTask('compile-compass', ['compass']);
 	grunt.registerTask('bower-install', ['wiredep']);
 	
-	grunt.registerTask('default', ['compile-sass', 'bower-install', 'connect:app', 'watch']);
+	grunt.registerTask('default', ['compile-compass', 'bower-install', 'connect:app', 'watch']);
 	grunt.registerTask('validate-js', ['jshint']);
 	grunt.registerTask('server-dist', ['connect:dist']);
 	
-	grunt.registerTask('publish', ['compile-sass', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);
+	grunt.registerTask('publish', ['compile-compass', 'clean:dist', 'validate-js', 'useminPrepare', 'copy:dist', 'newer:imagemin', 'concat', 'cssmin', 'uglify', 'usemin']);
 
 };

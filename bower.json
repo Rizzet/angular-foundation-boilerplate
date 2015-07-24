@@ -1,7 +1,7 @@
 {
   "name": "zf5_project",
   "dependencies": {
-    "foundation": "~5.4.6",
+    "foundation": "~5.4.7",
     "font-awesome": "~4.2.0",
     "angular": "~1.2.27",
     "angular-bindonce": "0.3.1",
