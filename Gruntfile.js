@@ -116,7 +116,7 @@ module.exports = function(grunt) {
 				tasks: ['compass']
 			},
 			livereload: {
-				files: ['<%= app %>/**/*.html', '!<%= app %>/bower_components/**', '<%= app %>/js/**/*.js', '<%= app %>/css/**/*.css', '<%= app %>/images/**/*.{jpg,gif,svg,jpeg,png}'],
+				files: ['Gruntfile.js','<%= app %>/**/*.html', '!<%= app %>/bower_components/**', '<%= app %>/js/**/*.js', '<%= app %>/css/**/*.css', '<%= app %>/images/**/*.{jpg,gif,svg,jpeg,png}'],
 				options: {
 					livereload: 35727
 				}
@@ -155,7 +155,8 @@ module.exports = function(grunt) {
 					'font-awesome',
 					'jquery-placeholder',
 					'jquery.cookie',
-					'foundation'
+					'\\\\bower_components\\\\foundation',
+					'/bower_components/foundation'
 				]
 			}
 		}

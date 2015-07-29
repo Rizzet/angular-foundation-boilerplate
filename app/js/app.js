@@ -7,61 +7,83 @@
 //***************************************
 
 angular.module('healthLiteracy', [
-  'ui.router',
-  'ngAnimate',
+    'ui.router',
+    'ngAnimate',
 ])
 
-.run(
-	[					 '$sce', '$timeout', '$rootScope', '$state', '$stateParams', 
-		function ($sce,   $timeout,   $rootScope,   $state,   $stateParams) {
+    .run(
+    ['$sce', '$timeout', '$rootScope', '$state', '$stateParams',
+        function ($sce, $timeout, $rootScope, $state, $stateParams) {
 
-			// It's very handy to add references to $state and $stateParams to the $rootScope
-			$rootScope.$state = $state;
-			$rootScope.$stateParams = $stateParams;
-		
-		}
-	]
+            // It's very handy to add references to $state and $stateParams to the $rootScope
+            $rootScope.$state = $state;
+            $rootScope.$stateParams = $stateParams;
+
+        }
+    ]
 )
 
-.config(
-  [          '$locationProvider', '$stateProvider', '$urlRouterProvider',
-    function ($locationProvider,   $stateProvider,   $urlRouterProvider) {
+    .config(
+    ['$locationProvider', '$stateProvider', '$urlRouterProvider',
+        function ($locationProvider, $stateProvider, $urlRouterProvider) {
 
-    	/////////////////////////////
-      // Redirects and Otherwise //
-      /////////////////////////////
+            /////////////////////////////
+            // Redirects and Otherwise //
+            /////////////////////////////
 
-      // Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
-      $urlRouterProvider
-      	.when('/c?id', '/contacts/:id')
-      	.otherwise('/');
+            // Use $urlRouterProvider to configure any redirects (when) and invalid urls (otherwise).
+            $urlRouterProvider
+                .when('/c?id', '/contacts/:id')
+                .otherwise('/');
 
-      //////////////////////////
-      // State Configurations //
-      //////////////////////////
+            //////////////////////////
+            // State Configurations //
+            //////////////////////////
 
-      // Use $stateProvider to configure your states.
-      $stateProvider
+            // Use $stateProvider to configure your states.
+            $stateProvider
 
-        //////////
-        // Home //
-        //////////
+                //////////
+                // Home //
+                //////////
 
-        .state("home", {
+                .state("home", {
 
-          // Use a url of "/" to set a state as the "index".
-          url: "/",
+                    // Use a url of "/" to set a state as the "index".
+                    url: "/",
 
-          // Example of an inline template string. By default, templates
-          // will populate the ui-view within the parent state's template.
-          // For top level states, like this one, the parent template is
-          // the index.html file. So this template will be inserted into the
-          // ui-view within index.html.
-          templateUrl: 'views/home.html'
-        });
+                    // Example of an inline template string. By default, templates
+                    // will populate the ui-view within the parent state's template.
+                    // For top level states, like this one, the parent template is
+                    // the index.html file. So this template will be inserted into the
+                    // ui-view within index.html.
+                    templateUrl: 'views/home.html'
+                })
+                .state('state1', {
+                    url: "/state1",
+                    templateUrl: "partials/state1.html"
+                })
+                .state('state1.list', {
+                    url: "/list",
+                    templateUrl: "partials/state1.list.html",
+                    controller: function ($scope) {
+                        $scope.items = ["A", "List", "Of", "Items"];
+                    }
+                })
+                .state('state2', {
+                    url: "/state2",
+                    templateUrl: "partials/state2.html"
+                })
+                .state('state2.list', {
+                    url: "/list",
+                    templateUrl: "partials/state2.list.html",
+                    controller: function ($scope) {
+                        $scope.things = ["A", "Set", "Of", "Things"];
+                    }
+                });
 
-    }
-  ]
+        }
+    ]
 );
 
 
@@ -129,28 +151,28 @@ angular.module('healthLiteracy', [
 
 //***************************************
 
-var app = (function(document, $) {
+var app = (function (document, $) {
 
-	'use strict';
-	var docElem = document.documentElement,
+    'use strict';
+    var docElem = document.documentElement,
 
-		_userAgentInit = function() {
-			docElem.setAttribute('data-useragent', navigator.userAgent);
-		},
-		_init = function() {
-			$(document).foundation();
-			_userAgentInit();
-		};
+        _userAgentInit = function () {
+            docElem.setAttribute('data-useragent', navigator.userAgent);
+        },
+        _init = function () {
+            $(document).foundation();
+            _userAgentInit();
+        };
 
-	return {
-		init: _init
-	};
+    return {
+        init: _init
+    };
 
 })(document, jQuery);
 
-(function() {
+(function () {
 
-	'use strict';
-	app.init();
+    'use strict';
+    app.init();
 
 })();

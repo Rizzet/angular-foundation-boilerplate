@@ -36,7 +36,7 @@
                   </section>
               </nav>
           </header>
-          <main ui-view></main>
+          <main ui-view><h1>Placeholder</h1><p>you should not see this. Probably a javascript error</p></main>
         </div>
 
         <!-- Off Canvas Menu -->
@@ -44,8 +44,9 @@
               <ul class="off-canvas-list">
                   <li><label>Foundation</label></li>
                   <li><h2>Terms</h2></li>
-                  <li><a href="#">The Psychohistorians</a></li>
-                  <li><a href="#">...</a></li>
+                  <li><a ui-sref="state1">Show State 1</a></li>
+                  <li><a ui-sref="state2">Show State 2</a></li>
+                  <li ng-repeat="item in menu"><a ui-sref="{{item.state}}">{{item.name}}</a></li>
               </ul>
           </aside>
 
@@ -59,19 +60,19 @@
 
 
           <!-- close the off-canvas menu -->
-          <a class="exit-off-canvas"></a>
+          <!--<a class="exit-off-canvas"></a>-->
       </div>
     </div>
 
     <!-- build:js js/vendor/libraries.min.js -->
     <!-- bower:js -->
     <script src="bower_components/jquery/dist/jquery.js"></script>
-    <script src="bower_components/fastclick/lib/fastclick.js"></script>
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-bindonce/bindonce.js"></script>
     <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
     <script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/fastclick/lib/fastclick.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
     <!-- build:js js/vendor/foundation.min.js -->
